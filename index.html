@@ -1,0 +1,903 @@
+<!doctype html>
+<html lang="en" class="h-full">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Website | Gurman Singh</title>
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+    <script src="/_sdk/element_sdk.js"></script>
+    <link rel="icon" type="image/png" href="./GS Logo.png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&amp;family=Space+Mono:wght@400;700&amp;display=swap"
+        rel="stylesheet">
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+        }
+
+        * {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .mono {
+            font-family: 'Space Mono', monospace;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes pulse-glow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+            }
+
+            50% {
+                box-shadow: 0 0 40px rgba(99, 102, 241, 0.6);
+            }
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes blink {
+            50% {
+                border-color: transparent;
+            }
+        }
+
+        .animate-fade-up {
+            animation: fadeUp 0.8s ease forwards;
+            opacity: 0;
+        }
+
+        .animate-slide-in {
+            animation: slideIn 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        .animate-scale-in {
+            animation: scaleIn 0.5s ease forwards;
+            opacity: 0;
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .animate-pulse-glow {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        .delay-1 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.3s;
+        }
+
+        .delay-4 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-5 {
+            animation-delay: 0.5s;
+        }
+
+        .delay-6 {
+            animation-delay: 0.6s;
+        }
+
+        .delay-7 {
+            animation-delay: 0.7s;
+        }
+
+        .delay-8 {
+            animation-delay: 0.8s;
+        }
+
+        .typing-text {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid #6366f1;
+            animation: typing 3s steps(30) forwards, blink 0.7s step-end infinite;
+            width: 0;
+        }
+
+        .skill-bar {
+            transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px) scale(1.02);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #6366f1, #a855f7, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .glass {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(99, 102, 241, 0.15);
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #6366f1, #a855f7);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .bg-grid {
+            background-image: radial-gradient(circle, rgba(99, 102, 241, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .section-visible .animate-on-scroll {
+            animation: fadeUp 0.8s ease forwards;
+        }
+
+        .project-overlay {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card-hover:hover .project-overlay {
+            opacity: 1;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #6366f1;
+            border-radius: 3px;
+        }
+    </style>
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+    </style>
+    <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+</head>
+
+<body class="h-full bg-slate-950 text-slate-100 overflow-auto">
+    <div id="app" class="w-full min-h-full bg-grid"><!-- Header -->
+        <header id="main-header" class="fixed top-0 left-0 right-0 z-50 glass transition-all duration-300">
+            <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between"><a href="#home"
+                    class="text-xl font-bold gradient-text mono">Gurman Singh</a>
+                <div class="hidden md:flex items-center gap-8"><a href="#home"
+                        class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors">Home</a>
+                    <a href="#about"
+                        class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors">About</a>
+                    <a href="#skills"
+                        class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors">Skills</a>
+                    <a href="#projects"
+                        class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors">Projects</a>
+                    <a href="#achievements"
+                        class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors">Achievements</a>
+                    <a href="#contact"
+                        class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors">Contact</a>
+                </div><button id="mobile-menu-btn" class="md:hidden text-slate-300 hover:text-white"> <i
+                        data-lucide="menu" class="w-6 h-6"></i> </button>
+            </nav>
+            <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-3"><a href="#home"
+                    class="block text-sm text-slate-300 hover:text-white">Home</a> <a href="#about"
+                    class="block text-sm text-slate-300 hover:text-white">About</a> <a href="#skills"
+                    class="block text-sm text-slate-300 hover:text-white">Skills</a> <a href="#projects"
+                    class="block text-sm text-slate-300 hover:text-white">Projects</a> <a href="#achievements"
+                    class="block text-sm text-slate-300 hover:text-white">Achievements</a> <a href="#contact"
+                    class="block text-sm text-slate-300 hover:text-white">Contact</a>
+            </div>
+        </header><!-- Hero Section -->
+        <section id="home" class="min-h-full flex items-center justify-center px-6 pt-20 relative overflow-hidden">
+            <div class="absolute top-20 right-10 w-72 h-72 bg-indigo-500/10 rounded-full blur-3xl animate-float"></div>
+            <div class="absolute bottom-20 left-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-float"
+                style="animation-delay: 1.5s;"></div>
+            <div class="max-w-4xl mx-auto text-center relative z-10">
+                <div class="animate-fade-up delay-1">
+                    <div
+                        class="w-32 h-30 mx-auto mb-8  bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center animate-pulse-glow">
+                        <img src="/Portfolio Website/Gurman Image.jpeg" alt="" height="300" width="300">
+                    </div>
+                </div>
+                <p class="animate-fade-up delay-2 mono text-indigo-400 text-sm mb-4 tracking-widest uppercase">Welcome
+                    to my Portfolio Website</p>
+                <h1 id="hero-name" class="animate-fade-up delay-3 text-5xl md:text-7xl font-800 mb-4 gradient-text">
+                    Gurman Singh
+                </h1>
+                <div class="animate-fade-up delay-4 overflow-hidden inline-block">
+                    <p id="hero-title" class="typing-text mono text-lg md:text-xl text-slate-300">Full Stack Web
+                        Developer
+                        &amp; UI/UX & Graphics Designer</p>
+                </div>
+                <p id="hero-desc" class="animate-fade-up delay-5 text-slate-400 mt-6 max-w-2xl mx-auto leading-relaxed">
+                    Passionate about crafting elegant digital experiences. I transform ideas into beautiful, functional
+                    applications with clean code and creative design.</p>
+                <div class="animate-fade-up delay-6 mt-10 flex flex-wrap gap-4 justify-center"><a href="#projects"
+                        class="px-8 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full font-medium hover:shadow-lg hover:shadow-indigo-500/25 transition-all hover:-translate-y-1">View
+                        My Work</a> <a href="#contact"
+                        class="px-8 py-3 border border-indigo-500/50 rounded-full font-medium hover:bg-indigo-500/10 transition-all hover:-translate-y-1">Get
+                        In Touch</a>
+                </div>
+                <div class="animate-fade-up delay-7 mt-12 flex justify-center gap-6"><a href="#" target="_blank"
+                        rel="noopener noreferrer" class="text-slate-400 hover:text-indigo-400 transition-colors"><i
+                            data-lucide="github" class="w-5 h-5"></i></a> <a href="#" target="_blank"
+                        rel="noopener noreferrer" class="text-slate-400 hover:text-indigo-400 transition-colors"><i
+                            data-lucide="linkedin" class="w-5 h-5"></i></a> <a href="#" target="_blank"
+                        rel="noopener noreferrer" class="text-slate-400 hover:text-indigo-400 transition-colors"><i
+                            data-lucide="twitter" class="w-5 h-5"></i></a> <a href="#" target="_blank"
+                        rel="noopener noreferrer" class="text-slate-400 hover:text-indigo-400 transition-colors"><i
+                            data-lucide="mail" class="w-5 h-5"></i></a>
+                </div>
+            </div>
+        </section><!-- About Section -->
+       <section id="about" class="py-24 px-6">
+    
+    <!-- Container -->
+    <div class="max-w-6xl mx-auto">
+
+        <!-- Grid -->
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+
+            <!-- LEFT SIDE (Profile + Stats) -->
+            <div class="animate-on-scroll">
+                <div class="relative">
+                    
+                    <div class="w-full aspect-square max-w-sm mx-auto rounded-2xl 
+                                bg-gradient-to-br from-indigo-600/20 to-purple-600/20 
+                                border border-indigo-500/20 flex items-center justify-center">
+
+                        <div class="text-center p-8">
+
+                            <!-- Profile Circle -->
+                            <div class="w-24 h-24 mx-auto mb-4 rounded-full 
+                                        bg-gradient-to-br from-indigo-500 to-purple-600 
+                                        flex items-center justify-center overflow-hidden">
+
+                                <img src="./GG.png"
+                                     alt="Profile"
+                                     class="w-full h-full object-cover rounded-full">
+                            </div>
+
+                            <!-- Stats -->
+                            <div class="grid grid-cols-2 gap-4 mt-6">
+
+                                <div class="glass rounded-xl p-3 text-center">
+                                    <p class="text-2xl font-bold text-indigo-400">15+</p>
+                                    <p class="text-xs text-slate-400">Years Learning Exp</p>
+                                </div>
+
+                                <div class="glass rounded-xl p-3 text-center">
+                                    <p class="text-2xl font-bold text-purple-400">50+</p>
+                                    <p class="text-xs text-slate-400">Projects</p>
+                                </div>
+
+                                <div class="glass rounded-xl p-3 text-center">
+                                    <p class="text-2xl font-bold text-pink-400">5+</p>
+                                    <p class="text-xs text-slate-400">Skills</p>
+                                </div>
+
+                                <div class="glass rounded-xl p-3 text-center">
+                                    <p class="text-2xl font-bold text-cyan-400">10+</p>
+                                    <p class="text-xs text-slate-400">Certificates</p>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- RIGHT SIDE (Text Content) -->
+            <div class="animate-on-scroll">
+                <h3 class="text-2xl font-semibold mb-4 text-white">
+                    A Developer Who Cares About Quality
+                </h3>
+
+                <p id="about-text" class="text-slate-400 leading-relaxed mb-6">
+                    I’m a B.Tech student specializing in Computer Science and Engineering 
+                    with a focus on Artificial Intelligence and Machine Learning. 
+                    I’m passionate about technology, programming, and building real-world 
+                    projects that strengthen my practical skills.
+
+                    I enjoy understanding concepts in a clear and efficient way so I can 
+                    apply them quickly, and I’m continuously working on improving my 
+                    coding abilities, productivity, and consistency. My goal is to build 
+                    a strong technical foundation and grow into a skilled professional 
+                    in the tech industry.
+                </p>
+
+                <div class="flex flex-wrap gap-3">
+                    
+                    <span class="px-4 py-2 rounded-full glass text-sm text-indigo-300">
+                        🎓 B.Tech Computer Science (AI-ML)
+                    </span>
+
+                    <span class="px-4 py-2 rounded-full glass text-sm text-purple-300">
+                        💼 Freelancer
+                    </span>
+
+                    <span class="px-4 py-2 rounded-full glass text-sm text-pink-300">
+                        📍 Available for Hire for Garry's Dev Team
+                    </span>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section><!-- Skills Section -->
+        <section id="skills" class="py-24 px-6 bg-slate-900/50">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <p class="mono text-indigo-400 text-sm tracking-widest uppercase mb-2">What I do</p>
+                    <h2 class="text-4xl md:text-5xl font-bold gradient-text">Skills &amp; Expertise</h2>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8 mb-16">
+                    <div class="space-y-6">
+                        <h3 class="text-lg font-semibold text-white mb-4 flex items-center gap-2"><i data-lucide="code"
+                                class="w-5 h-5 text-indigo-400"></i> Frontend</h3>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-slate-300 text-sm">HTML / CSS</span><span
+                                    class="text-indigo-400 text-sm mono">95%</span>
+                            </div>
+                            <div class="h-2 bg-slate-800 rounded-full overflow-hidden">
+                                <div class="skill-bar h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"
+                                    data-width="95"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-slate-300 text-sm">JavaScript</span><span
+                                    class="text-indigo-400 text-sm mono">90%</span>
+                            </div>
+                            <div class="h-2 bg-slate-800 rounded-full overflow-hidden">
+                                <div class="skill-bar h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"
+                                    data-width="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-slate-300 text-sm">React/Node.JS</span><span
+                                    class="text-indigo-400 text-sm mono">88%</span>
+                            </div>
+                            <div class="h-2 bg-slate-800 rounded-full overflow-hidden">
+                                <div class="skill-bar h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"
+                                    data-width="88"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-slate-300 text-sm">BootStrap </span><span
+                                    class="text-indigo-400 text-sm mono">97%</span>
+                            </div>
+                            <div class="h-2 bg-slate-800 rounded-full overflow-hidden">
+                                <div class="skill-bar h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"
+                                    data-width="92"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <h3 class="text-lg font-semibold text-white mb-4 flex items-center gap-2"><i
+                                data-lucide="server" class="w-5 h-5 text-purple-400"></i> Backend</h3>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-slate-300 text-sm">Node.js / Express</span><span
+                                    class="text-purple-400 text-sm mono">85%</span>
+                            </div>
+                            <div class="h-2 bg-slate-800 rounded-full overflow-hidden">
+                                <div class="skill-bar h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"
+                                    data-width="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-slate-300 text-sm">Python</span><span
+                                    class="text-purple-400 text-sm mono">80%</span>
+                            </div>
+                            <div class="h-2 bg-slate-800 rounded-full overflow-hidden">
+                                <div class="skill-bar h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"
+                                    data-width="80"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-slate-300 text-sm">MongoDB</span><span
+                                    class="text-purple-400 text-sm mono">82%</span>
+                            </div>
+                            <div class="h-2 bg-slate-800 rounded-full overflow-hidden">
+                                <div class="skill-bar h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"
+                                    data-width="82"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-slate-300 text-sm">REST & RestFul APIs</span><span
+                                    class="text-purple-400 text-sm mono">87%</span>
+                            </div>
+                            <div class="h-2 bg-slate-800 rounded-full overflow-hidden">
+                                <div class="skill-bar h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"
+                                    data-width="87"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- Tools Grid -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-4">
+                    <div class="glass rounded-xl p-4 text-center card-hover">
+                        <i data-lucide="figma" class="w-8 h-8 mx-auto mb-2 text-indigo-400"></i>
+                        <p class="text-xs text-slate-400">SQL</p>
+                    </div>
+                    <div class="glass rounded-xl p-4 text-center card-hover">
+                        <i data-lucide="git-branch" class="w-8 h-8 mx-auto mb-2 text-purple-400"></i>
+                        <p class="text-xs text-slate-400">Git</p>
+                    </div>
+                    <div class="glass rounded-xl p-4 text-center card-hover">
+                        <i data-lucide="cloud" class="w-8 h-8 mx-auto mb-2 text-cyan-400"></i>
+                        <p class="text-xs text-slate-400">AWS</p>
+                    </div>
+                    <div class="glass rounded-xl p-4 text-center card-hover">
+                        <i data-lucide="box" class="w-8 h-8 mx-auto mb-2 text-pink-400"></i>
+                        <p class="text-xs text-slate-400">Docker</p>
+                    </div>
+                    <div class="glass rounded-xl p-4 text-center card-hover">
+                        <i data-lucide="terminal" class="w-8 h-8 mx-auto mb-2 text-green-400"></i>
+                        <p class="text-xs text-slate-400">UI/UX</p>
+                    </div>
+                    <div class="glass rounded-xl p-4 text-center card-hover">
+                        <i data-lucide="layers" class="w-8 h-8 mx-auto mb-2 text-yellow-400"></i>
+                        <p class="text-xs text-slate-400">CI/CD</p>
+                    </div>
+                </div>
+            </div>
+        </section><!-- Projects Section -->
+        <section id="projects" class="py-24 px-6">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <p class="mono text-indigo-400 text-sm tracking-widest uppercase mb-2">My work</p>
+                    <h2 class="text-4xl md:text-5xl font-bold gradient-text">Featured Projects</h2>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"><!-- Project 1 -->
+                    <div class="card-hover glass rounded-2xl overflow-hidden group">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="/Portfolio Website/image.png"
+                                class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <div
+                                class="project-overlay absolute inset-0 bg-indigo-900/80 flex items-center justify-center gap-4">
+                                <a href="#" class="p-3 bg-white/10 rounded-full hover:bg-white/20 transition"><i
+                                        data-lucide="external-link" class="w-5 h-5"></i></a> <a href="#"
+                                    class="p-3 bg-white/10 rounded-full hover:bg-white/20 transition"><i
+                                        data-lucide="github" class="w-5 h-5"></i></a>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-lg font-semibold text-white mb-2">E-Commerce Platform</h3>
+                            <p class="text-slate-400 text-sm mb-4">Full-stack e-commerce solution with payment
+                                integration, admin dashboard, and real-time inventory.</p>
+                            <div class="flex flex-wrap gap-2"><span
+                                    class="px-3 py-1 text-xs rounded-full bg-indigo-500/20 text-indigo-300">React</span>
+                                <span
+                                    class="px-3 py-1 text-xs rounded-full bg-purple-500/20 text-purple-300">Node.js</span>
+                                <span class="px-3 py-1 text-xs rounded-full bg-pink-500/20 text-pink-300">MongoDB</span>
+                            </div>
+                        </div>
+                    </div><!-- Project 2 -->
+                    <div class="card-hover glass rounded-2xl overflow-hidden group">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="/Portfolio Website/image1.png"
+                                class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <div
+                                class="project-overlay absolute inset-0 bg-purple-900/80 flex items-center justify-center gap-4">
+                                <a href="#" class="p-3 bg-white/10 rounded-full hover:bg-white/20 transition"><i
+                                        data-lucide="external-link" class="w-5 h-5"></i></a> <a href="#"
+                                    class="p-3 bg-white/10 rounded-full hover:bg-white/20 transition"><i
+                                        data-lucide="github" class="w-5 h-5"></i></a>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-lg font-semibold text-white mb-2">Student Online LMS Portal</h3>
+                            <p class="text-slate-400 text-sm mb-4">Students Online LMS Portal of university to track
+                                thier Progress , result , fees and many More..
+                            <p>
+                            <div class="flex flex-wrap gap-2"><span
+                                    class="px-3 py-1 text-xs rounded-full bg-indigo-500/20 text-indigo-300">Next.js</span>
+                                <span
+                                    class="px-3 py-1 text-xs rounded-full bg-purple-500/20 text-purple-300">Socket.io</span>
+                                <span class="px-3 py-1 text-xs rounded-full bg-cyan-500/20 text-cyan-300">Redis</span>
+                            </div>
+                        </div>
+                    </div><!-- Project 3 -->
+                    <div class="card-hover glass rounded-2xl overflow-hidden group">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="/Portfolio Website/image2.png"
+                                class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <div
+                                class="project-overlay absolute inset-0 bg-cyan-900/80 flex items-center justify-center gap-4">
+                                <a href="#" class="p-3 bg-white/10 rounded-full hover:bg-white/20 transition"><i
+                                        data-lucide="external-link" class="w-5 h-5"></i></a> <a href="#"
+                                    class="p-3 bg-white/10 rounded-full hover:bg-white/20 transition"><i
+                                        data-lucide="github" class="w-5 h-5"></i></a>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-lg font-semibold text-white mb-2">Online Login Form</h3>
+                            <p class="text-slate-400 text-sm mb-4">Online Login Form for Our Garry's Dev Team | Be a
+                                Part of our team by Filling out this Login Form anytime 24/7</p>
+                            <div class="flex flex-wrap gap-2"><span
+                                    class="px-3 py-1 text-xs rounded-full bg-indigo-500/20 text-indigo-300">Vue.js</span>
+                                <span
+                                    class="px-3 py-1 text-xs rounded-full bg-purple-500/20 text-purple-300">D3.js</span>
+                                <span
+                                    class="px-3 py-1 text-xs rounded-full bg-green-500/20 text-green-300">PostgreSQL</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><!-- Achievements Section -->
+        <section id="achievements" class="py-24 px-6 bg-slate-900/50">
+    
+    <!-- Section Container -->
+    <div class="max-w-6xl mx-auto">
+
+        <!-- Heading -->
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-2">
+                Achievements & Certificates
+            </h2>
+            <p class="text-slate-400">
+                A showcase of my learning and accomplishments
+            </p>
+        </div>
+
+        <!-- Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+            <!-- Card 1 -->
+            <div class="card-hover glass rounded-2xl p-6 text-center flex flex-col items-center">
+                <img src="./intern.png"
+                     alt="Internship Certificate"
+                     class="w-full h-48 object-contain mb-4">
+                
+                <h3 class="font-semibold text-white mb-1">
+                    Full Stack Web Development Intern Certificate
+                </h3>
+                <p class="text-slate-400 text-sm">
+                    Internship in Full Stack Web Development
+                </p>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card-hover glass rounded-2xl p-6 text-center flex flex-col items-center">
+                <img src="./avinya.png"
+                     alt="Avinya Certificate"
+                     class="w-full h-48 object-contain mb-4">
+                
+                <h3 class="font-semibold text-white mb-1">
+                    AVINYA Certificate
+                </h3>
+                <p class="text-slate-400 text-sm">
+                    Business Plan & Strategy Certification
+                </p>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card-hover glass rounded-2xl p-6 text-center flex flex-col items-center">
+                <img src="./hack.png"
+                     alt="Hackathon"
+                     class="w-full h-48 object-contain mb-4">
+                
+                <h3 class="font-semibold text-white mb-1">
+                    HackForge Hackathon
+                </h3>
+                <p class="text-slate-400 text-sm">
+                    Participated in university-level hackathon
+                </p>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="card-hover glass rounded-2xl p-6 text-center flex flex-col items-center">
+                <img src="./abc.png"
+                     alt="C++ Course"
+                     class="w-full h-48 object-contain mb-4">
+                
+                <h3 class="font-semibold text-white mb-1">
+                    C++ Course
+                </h3>
+                <p class="text-slate-400 text-sm">
+                    Completed C++ Essentials Level 1
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 px-6">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-16">
+                    <p class="mono text-indigo-400 text-sm tracking-widest uppercase mb-2">Let's connect</p>
+                    <h2 class="text-4xl md:text-5xl font-bold gradient-text">Get In Touch</h2>
+                </div>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4">
+                            <img src="/Portfolio Website/email.png" alt="" height="50" width="50">
+                            <div>
+                                <p class="text-sm text-slate-400">Email</p>
+                                <p class="text-white">gurmansingh01@myyahoo.mail</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <img src="/Portfolio Website/phone.png" alt="" height="55" width="50">
+                            <div>
+                                <p class="text-sm text-slate-400">Phone</p>
+                                <p class="text-white">+91 9991980620</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <img src="/Portfolio Website/location.png" alt="" height="50" width="50">
+                            <div>
+                                <p class="text-sm text-slate-400">Location</p>
+                                <p class="text-white">Karnal , India</p>
+                            </div>
+                        </div>
+                    </div>
+                    <form id="contact-form" class="space-y-4">
+                        <div><label for="name" class="block text-sm text-slate-400 mb-1">Name</label> <input type="text"
+                                id="name"
+                                class="w-full px-4 py-3 rounded-xl bg-slate-800/50 border border-slate-700 text-white focus:outline-none focus:border-indigo-500 transition"
+                                placeholder="Your name">
+                        </div>
+                        <div><label for="email" class="block text-sm text-slate-400 mb-1">Email</label> <input
+                                type="email" id="email"
+                                class="w-full px-4 py-3 rounded-xl bg-slate-800/50 border border-slate-700 text-white focus:outline-none focus:border-indigo-500 transition"
+                                placeholder="your@email.com">
+                        </div>
+                        <div><label for="message" class="block text-sm text-slate-400 mb-1">Message</label> <textarea
+                                id="message" rows="4"
+                                class="w-full px-4 py-3 rounded-xl bg-slate-800/50 border border-slate-700 text-white focus:outline-none focus:border-indigo-500 transition resize-none"
+                                placeholder="Your message..."></textarea>
+                        </div><button type="submit"
+                            class="w-full py-3 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl font-medium hover:shadow-lg hover:shadow-indigo-500/25 transition-all hover:-translate-y-1 flex items-center justify-center gap-2">
+                            <i data-lucide="send" class="w-4 h-4"></i> Send Message </button>
+                        <p id="form-success" class="hidden text-green-400 text-sm text-center mt-2">✓ Message sent
+                            successfully!</p>
+                    </form>
+                </div>
+            </div>
+        </section><!-- Footer -->
+        <footer class="py-12 px-6 border-t border-slate-800">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div><a href="#home" class="text-xl font-bold gradient-text mono">Gurman Singh</a>
+                        <p id="footer-text" class="text-slate-400 text-sm mt-2">© 2026 Gurman Singh | All Rights
+                            Reserved | Crafted with passion.
+                        </p>
+                    </div>
+                    <div class="flex gap-4"><a href="https://github.com/GurmanSingh7" target="_blank"
+                            rel="noopener noreferrer"
+                            class="w-10 h-10  glass flex items-center justify-center text-slate-400 hover:text-indigo-400 transition-colors">
+
+                            <img src="/Portfolio Website/Git.png" alt="GitHub" class="w-10 h-10">
+
+                        </a><a href="https://x.com/GurmanSingh101" target="_blank" rel="noopener noreferrer"
+                            class="w-10 h-10  glass flex items-center justify-center text-slate-400 hover:text-indigo-400 transition-colors">
+
+                            <img src="/Portfolio Website/X.png" alt="GitHub" class="w-10 h-10">
+
+                        </a><a href="https://www.linkedin.com/in/gurmansingh101/" target="_blank" rel="noopener noreferrer"
+                            class="w-10 h-10  glass flex items-center justify-center text-slate-400 hover:text-indigo-400 transition-colors">
+
+                            <img src="/Portfolio Website/LinkedIN.png" alt="GitHub" class="w-10 h-10">
+
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script>
+        // Element SDK
+        const defaultConfig = {
+            hero_name: 'Gurman Singh',
+            hero_title: 'Full Stack Developer & UI/UX Designer',
+            hero_description: 'Passionate about crafting elegant digital experiences. I transform ideas into beautiful, functional applications with clean code and creative design.',
+            about_text: "I'm a passionate full-stack developer with 3+ years of experience building web applications. I specialize in creating responsive, user-friendly interfaces and robust backend systems. My approach combines clean code practices with creative problem-solving to deliver exceptional digital products.",
+            footer_text: '© 2026 Gurman Singh. Crafted with passion.',
+            background_color: '#020617',
+            surface_color: '#0f172a',
+            text_color: '#e2e8f0',
+            primary_action_color: '#6366f1',
+            secondary_action_color: '#a855f7',
+            font_family: 'Outfit',
+            font_size: 16
+        };
+
+        async function onConfigChange(config) {
+            const c = { ...defaultConfig, ...config };
+            document.getElementById('hero-name').textContent = c.hero_name;
+            document.getElementById('hero-title').textContent = c.hero_title;
+            document.getElementById('hero-desc').textContent = c.hero_description;
+            document.getElementById('about-text').textContent = c.about_text;
+            document.getElementById('footer-text').textContent = c.footer_text;
+
+            document.body.style.backgroundColor = c.background_color;
+            document.querySelectorAll('.glass').forEach(el => {
+                el.style.backgroundColor = c.surface_color + 'b3';
+                el.style.borderColor = c.primary_action_color + '26';
+            });
+            document.querySelectorAll('h1,h2,h3,h4,.text-white').forEach(el => el.style.color = c.text_color);
+
+            const fontStack = `${c.font_family}, sans-serif`;
+            document.body.style.fontFamily = fontStack;
+            const baseSize = c.font_size;
+            document.querySelectorAll('p, span, a').forEach(el => { if (!el.closest('h1,h2,h3,h4')) el.style.fontSize = baseSize + 'px'; });
+            document.querySelectorAll('h1').forEach(el => el.style.fontSize = baseSize * 3.5 + 'px');
+            document.querySelectorAll('h2').forEach(el => el.style.fontSize = baseSize * 2.5 + 'px');
+            document.querySelectorAll('h3').forEach(el => el.style.fontSize = baseSize * 1.4 + 'px');
+        }
+
+        window.elementSdk.init({
+            defaultConfig,
+            onConfigChange,
+            mapToCapabilities: (config) => ({
+                recolorables: [
+                    { get: () => config.background_color || defaultConfig.background_color, set: (v) => { config.background_color = v; window.elementSdk.setConfig({ background_color: v }); } },
+                    { get: () => config.surface_color || defaultConfig.surface_color, set: (v) => { config.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); } },
+                    { get: () => config.text_color || defaultConfig.text_color, set: (v) => { config.text_color = v; window.elementSdk.setConfig({ text_color: v }); } },
+                    { get: () => config.primary_action_color || defaultConfig.primary_action_color, set: (v) => { config.primary_action_color = v; window.elementSdk.setConfig({ primary_action_color: v }); } },
+                    { get: () => config.secondary_action_color || defaultConfig.secondary_action_color, set: (v) => { config.secondary_action_color = v; window.elementSdk.setConfig({ secondary_action_color: v }); } }
+                ],
+                borderables: [],
+                fontEditable: { get: () => config.font_family || defaultConfig.font_family, set: (v) => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); } },
+                fontSizeable: { get: () => config.font_size || defaultConfig.font_size, set: (v) => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); } }
+            }),
+            mapToEditPanelValues: (config) => new Map([
+                ['hero_name', config.hero_name || defaultConfig.hero_name],
+                ['hero_title', config.hero_title || defaultConfig.hero_title],
+                ['hero_description', config.hero_description || defaultConfig.hero_description],
+                ['about_text', config.about_text || defaultConfig.about_text],
+                ['footer_text', config.footer_text || defaultConfig.footer_text]
+            ])
+        });
+
+        // Mobile menu
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Contact form
+        document.getElementById('contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            document.getElementById('form-success').classList.remove('hidden');
+            e.target.reset();
+            setTimeout(() => document.getElementById('form-success').classList.add('hidden'), 3000);
+        });
+
+        // Skill bars animation on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.querySelectorAll('.skill-bar').forEach(bar => {
+                        bar.style.width = bar.dataset.width + '%';
+                    });
+                    entry.target.classList.add('section-visible');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('section').forEach(s => observer.observe(s));
+
+        // Init skill bars at 0
+        document.querySelectorAll('.skill-bar').forEach(bar => bar.style.width = '0%');
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(anchor.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+        lucide.createIcons();
+    </script>
+    <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'9f4d6770050897f7',t:'MTc3NzYyNDAxNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+</body>
+
+</html>

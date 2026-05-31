@@ -201,8 +201,7 @@ Become Industry Expert
 # 🌐 Connect With Me
 
 * GitHub: GurmanSingh7
-* LinkedIn: Add Your Profile Link
-* Email: Add Your Email
+
 
 ---
 

@@ -1,5 +1,4 @@
 <div align="center">
- 
 <img src="https://readme-typing-svg.demolab.com?font=Orbitron&weight=900&size=40&pause=1000&color=00E5FF&center=true&vCenter=true&width=1400&height=100&lines=DEV+TEAM+OWNER+GURMAN+SINGH;PORTFOLIO+WEBSITE;FULL+STACK+DEVELOPER;AI+%26+ML+ENGINEER;BUILDING+THE+FUTURE+WITH+CODE" />
 
 <br>
